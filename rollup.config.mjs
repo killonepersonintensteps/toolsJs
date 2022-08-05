@@ -3,16 +3,16 @@
  * @Date 2022-07-27 13:51:14
  * @LastEditor xiaoning.li@inossem.com
  * @LastEditTime 2022-07-29 11:49:09
- * @Description rollup 配置
+ * @Description rollup 配置 配置文件是一个 ES 模块
  */
-
-const os = require('os')
-
-const interfaces = os.networkInterfaces()
 
 import serve from 'rollup-plugin-serve'
 
 import { babel } from '@rollup/plugin-babel'
+
+import { onListeningServerRunning } from './src/utils/env.js'
+
+import chalk from 'chalk'
 
 export default {
     input: 'src/main.js', // 入口文件
@@ -42,20 +42,18 @@ export default {
             verbose: true,
             openPage: './index.html',
             port: 3002,
-            // TODO: 使用 chalk 优化控制台输出
-            // onListening: function (server) {
-            //     console.log(getIPAddress())
-            //     // console.log(`
-            //     //     CPU: ${chalk.red('90%')}
-            //     //     RAM: ${chalk.green('40%')}
-            //     //     DISK: ${chalk.yellow('70%')}
-            //     // `)
-            //     const address = server.address()
-            //     const host = address.address === '::' ? 'localhost' : address.address
-            //     // by using a bound function, we can access options as `this`
-            //     const protocol = this.https ? 'https' : 'http'
-            //     console.log(`Server listening at ${protocol}://${host}:${address.port}/`)
-            // },
+            onListening: onListeningServerRunning
+//             onListening: function (server) {
+//                 const address = server.address()
+//                 console.log(address, getIPAddress())
+//                 const ipHost = getIPAddress()
+//                 const host = address.address === '::' ? 'localhost' : address.address
+//                 const protocol = this.https ? 'https' : 'http'
+//                 console.log(`
+// - Local: ${chalk.red(`${protocol}://${host}:${address.port}/`)}
+// - NetWork: ${chalk.green(`${protocol}://${ipHost}:${address.port}/`)}
+//             `)
+//             },
         }),
     ],
 
