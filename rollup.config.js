@@ -1,3 +1,11 @@
+/**
+ * @Author  xiaoning.li@inossem.com
+ * @Date 2022-07-27 13:51:14
+ * @LastEditor xiaoning.li@inossem.com
+ * @LastEditTime 2022-07-29 11:49:09
+ * @Description rollup 配置
+ */
+
 const os = require('os')
 
 const interfaces = os.networkInterfaces()
@@ -50,4 +58,10 @@ export default {
             // },
         }),
     ],
+
+    watch: {
+        include: 'src/**',
+        exclude: 'node_modules/**',
+        clearScreen: false,
+    },
 }

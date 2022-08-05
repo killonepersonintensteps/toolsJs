@@ -4,6 +4,7 @@
   "description": "common tools for js",
   "main": "mian.js",
   "scripts": {
+    "dev": "rollup -c ./rollup.config.js -w",
     "build": "rollup -c ./rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
