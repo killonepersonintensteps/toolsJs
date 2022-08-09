@@ -1,10 +1,13 @@
-/**
- * @Author  xiaoning.li@inossem.com
- * @Date 2022-07-27 13:51:14
- * @LastEditor xiaoning.li@inossem.com
- * @LastEditTime 2022-07-29 11:49:09
- * @Description rollup 配置 配置文件是一个 ES 模块
+/*
+ * @Author: xiaoning.li@inossem.com
+ * @Date: 2022-08-05 18:43:20
+ * @LastEditors: xiaoning.li@inossem.com
+ * @LastEditTime: 2022-08-09 11:56:33
+ * @Description: rollup 配置 配置文件是一个 ES 模块
  */
+
+// 导出defineConfig方法可以让编辑器（VSCode）智能提示所有的rollup的配置项
+import { defineConfig } from 'rollup'
 
 import serve from 'rollup-plugin-serve'
 
@@ -12,22 +15,36 @@ import { babel } from '@rollup/plugin-babel'
 
 import { onListeningServerRunning } from './src/utils/env.js'
 
-import chalk from 'chalk'
+import resolve from '@rollup/plugin-node-resolve'
 
-export default {
+import commonjs from '@rollup/plugin-commonjs'
+
+import json from '@rollup/plugin-json'
+
+export default defineConfig({
     input: 'src/main.js', // 入口文件
 
-    output: {
-        file: 'dist/bundle.js', // 指定打包输出文件路径(区别于 webpak的 path)
-
-        name: 'toolsJs', // 打包为 umd 格式, 必须指定 name 字段
-
-        format: 'umd', // "amd", "cjs", "system", "es", "iife" or "umd"
-
-        sourcemap: true, // 开启sourcemap
-    },
-
+    output: [
+        {
+            file: `dist/toolsJs.cjs.js`,
+            format: 'cjs',
+            exports: 'auto',
+        },
+        {
+            file: `dist/toolsJs.es.js`,
+            format: 'es',
+            exports: 'auto',
+        },
+        {
+            file: `dist/toolsJs.umd.js`,
+            format: 'umd',
+            name: 'toolsJs', // 打包为 umd 格式, 必须指定 name 字段 可以在script标签引入后window下会挂载该属性的变量来使用你的类库方法
+            exports: 'auto',
+        },
+    ],
     plugins: [
+        resolve(),
+        commonjs(),
         babel({
             // 建议显式配置此选项（即使使用其默认值），以便对如何将这些 babel 助手插入代码做出明智的决定
             babelHelpers: 'bundled',
@@ -37,23 +54,13 @@ export default {
 
             exclude: ['node_modules'],
         }),
+        json(),
         serve({
             open: true,
             verbose: true,
             openPage: './index.html',
             port: 3002,
-            onListening: onListeningServerRunning
-//             onListening: function (server) {
-//                 const address = server.address()
-//                 console.log(address, getIPAddress())
-//                 const ipHost = getIPAddress()
-//                 const host = address.address === '::' ? 'localhost' : address.address
-//                 const protocol = this.https ? 'https' : 'http'
-//                 console.log(`
-// - Local: ${chalk.red(`${protocol}://${host}:${address.port}/`)}
-// - NetWork: ${chalk.green(`${protocol}://${ipHost}:${address.port}/`)}
-//             `)
-//             },
+            onListening: onListeningServerRunning,
         }),
     ],
 
@@ -62,4 +69,4 @@ export default {
         exclude: 'node_modules/**',
         clearScreen: false,
     },
-}
+})
