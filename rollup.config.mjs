@@ -2,7 +2,7 @@
  * @Author: xiaoning.li@inossem.com
  * @Date: 2022-08-05 18:43:20
  * @LastEditors: xiaoning.li@inossem.com
- * @LastEditTime: 2022-08-09 11:56:33
+ * @LastEditTime: 2022-08-29 15:28:41
  * @Description: rollup 配置 配置文件是一个 ES 模块
  */
 
@@ -14,12 +14,6 @@ import serve from 'rollup-plugin-serve'
 import { babel } from '@rollup/plugin-babel'
 
 import { onListeningServerRunning } from './src/utils/env.js'
-
-import resolve from '@rollup/plugin-node-resolve'
-
-import commonjs from '@rollup/plugin-commonjs'
-
-import json from '@rollup/plugin-json'
 
 export default defineConfig({
     input: 'src/main.js', // 入口文件
@@ -43,8 +37,6 @@ export default defineConfig({
         },
     ],
     plugins: [
-        resolve(),
-        commonjs(),
         babel({
             // 建议显式配置此选项（即使使用其默认值），以便对如何将这些 babel 助手插入代码做出明智的决定
             babelHelpers: 'bundled',
@@ -54,7 +46,6 @@ export default defineConfig({
 
             exclude: ['node_modules'],
         }),
-        json(),
         serve({
             open: true,
             verbose: true,
