@@ -2,7 +2,7 @@
  * @Author: xiaoning.li@inossem.com
  * @Date: 2022-08-05 18:43:20
  * @LastEditors: xiaoning.li@inossem.com
- * @LastEditTime: 2022-08-29 15:28:41
+ * @LastEditTime: 2022-08-29 18:07:23
  * @Description: rollup 配置 配置文件是一个 ES 模块
  */
 
@@ -15,8 +15,9 @@ import { babel } from '@rollup/plugin-babel'
 
 import { onListeningServerRunning } from './src/utils/env.js'
 
+import typescript from '@rollup/plugin-typescript'
 export default defineConfig({
-    input: 'src/main.js', // 入口文件
+    input: 'src/main.ts', // 入口文件
 
     output: [
         {
@@ -46,6 +47,7 @@ export default defineConfig({
 
             exclude: ['node_modules'],
         }),
+        typescript(),
         serve({
             open: true,
             verbose: true,
