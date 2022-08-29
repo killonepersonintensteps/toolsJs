@@ -1,6 +1,6 @@
 {
   "name": "toolsjs",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "common tools for js",
   "main": "mian.js",
   "type": "module",
@@ -42,6 +42,7 @@
     "eslint": "^8.23.0",
     "husky": "3.1.0",
     "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "rollup-plugin-serve": "^2.0.0",
     "typescript": "^4.8.2"
   },
@@ -58,8 +59,8 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "node --max_old_space_size=8192 ./node_modules/.bin/prettier -w",
-      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color",
+      "node ./node_modules/.bin/prettier --config prettier.cjs",
+      "node ./node_modules/.bin/eslint --config eslint.cjs --fix --color",
       "git add"
     ]
   }
