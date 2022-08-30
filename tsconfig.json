@@ -1,10 +1,14 @@
 {
+  // "include": [],                           /* 用来指定哪些ts文件需要被编译,可以添加多个 路径：**表示任意目录 *表示任意文件 */
+  // "exclude": [],                           /* 不需要被编译的目录,数组，可以添加多个, 路径：**表示任意目录 *表示任意文件*/
+  // "extends": "",                           /* 定义被继承的配置文件 */
+  // "files": [],                             /* 指定被编译文件的列表，只有需要编译的文件少时才会用到，一般直接用include指定文件夹 */
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
-    "target": "esnext",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "target": "ES5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
