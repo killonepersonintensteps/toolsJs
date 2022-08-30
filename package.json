@@ -59,8 +59,8 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "node ./node_modules/.bin/prettier --config prettier.cjs",
-      "node ./node_modules/.bin/eslint --config eslint.cjs --fix --color",
+      "node ./node_modules/.bin/prettier",
+      "node ./node_modules/.bin/eslint --config --fix --color",
       "git add"
     ]
   }
