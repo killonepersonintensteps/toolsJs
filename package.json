@@ -1,9 +1,10 @@
 {
   "name": "@killonepits/toolsjs",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "description": "common tools for js",
-  "main": "dist/toosJs.cjs.js",
-  "module": "dist/toosJs.es.js",
+  "main": "lib/bundle.cjs.js",
+  "module": "lib/bundle.es.js",
+  "types": "types/index.d.ts",
   "type": "module",
   "scripts": {
     "dev": "rollup -c ./rollup.config.mjs -w",

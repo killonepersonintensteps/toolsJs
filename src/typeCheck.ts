@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoning.li
  * @Date: 2022-07-27 16:55:50
- * @LastEditors: xiaoning.li@inossem.com
- * @LastEditTime: 2022-08-30 18:20:21
+ * @LastEditors: xiaoning.li
+ * @LastEditTime: 2022-08-30 10:37:51
  * @Description: 数据类型检查
  */
 
@@ -19,6 +19,6 @@ export const isBoolean = (v: unknown) => Object.prototype.toString.call(v) === '
 export const isFunction = (v: unknown) => Object.prototype.toString.call(v) === '[object Function]'
 
 export const isUndefined = (v: unknown) =>
-	Object.prototype.toString.call(v) === '[object Undefined]'
+    Object.prototype.toString.call(v) === '[object Undefined]'
 
 export const isNull = (v: unknown) => Object.prototype.toString.call(v) === '[object Null]'

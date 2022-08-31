@@ -1,0 +1,13 @@
+docs
+node_modules
+plugin
+src
+test
+.babelrc
+.eslintignore
+.gitignore
+.prettierrc
+.gitignore
+index.html
+rollup.config.mjs
+tsconfig.json
