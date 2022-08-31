@@ -1,11 +1,4 @@
-### TODO List
-- 添加 typescript
 
-- 添加 chalk 优化控制台输出
-
-- 添加动态打包脚本
-
-- 添加 Eslint 支持
 
 ### 常用JS工具函数合集
 
@@ -35,7 +28,7 @@ npm run build
 
 ```js
 // 模块化方案
-import toolsJs from 'toolsJs'
+import toolsJs from '@killonepits/tools'
 
 console.log(toolsJs.typeCheck.isString([])) // false
 ```
@@ -43,7 +36,7 @@ console.log(toolsJs.typeCheck.isString([])) // false
 - Node 环境中
 
 ```js
-const toolsJs = require(toolsJs)
+const toolsJs = require('@killonepits/tools')
 
 console.log(toolsJs.typeCheck.isString([])) // false
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "@killonepits/toolsjs",
-  "version": "1.0.7",
+  "name": "@killonepits/tools",
+  "version": "1.0.1",
   "description": "common tools for js",
   "main": "lib/bundle.cjs.js",
   "module": "lib/bundle.es.js",
