@@ -2,20 +2,17 @@
  * @Author: xiaoning.li@inossem.com
  * @Date: 2022-08-05 18:43:20
  * @LastEditors: xiaoning.li@inossem.com
- * @LastEditTime: 2022-08-31 14:30:56
+ * @LastEditTime: 2022-09-06 10:38:44
  * @Description: rollup 配置 配置文件是一个 ES 模块
  */
 
 // 导出defineConfig方法可以让编辑器（VSCode）智能提示所有的rollup的配置项
 import { defineConfig } from 'rollup'
-
-import serve from 'rollup-plugin-serve'
-
-import { babel } from '@rollup/plugin-babel'
-
 import { onListeningServerRunning } from './src/utils/env.js'
-
+import serve from 'rollup-plugin-serve'
+import { babel } from '@rollup/plugin-babel'
 import typescript from '@rollup/plugin-typescript'
+const isProd = process.env.NODE_ENV === 'production'
 export default defineConfig({
     input: 'src/main.ts', // 入口文件
 
@@ -48,13 +45,15 @@ export default defineConfig({
             exclude: ['node_modules'],
         }),
         typescript(),
-        serve({
-            open: true,
-            verbose: true,
-            openPage: './index.html',
-            port: 3002,
-            onListening: onListeningServerRunning,
-        }),
+        isProd
+            ? null
+            : serve({
+                  open: true,
+                  verbose: true,
+                  openPage: './index.html',
+                  port: 3002,
+                  onListening: onListeningServerRunning,
+              }),
     ],
 
     watch: {
